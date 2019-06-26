@@ -96,7 +96,9 @@ class Solution(object):
         # C can be placed before D (500) and M (1000) to make 400 and 900.
         """
         before_dict = {
-            "I":1,
+            "I": ("V", "X"),
+            "X": ("L", "C"),
+            "C": ("D", "M"),
         }
         item_dict = \
         {
@@ -109,6 +111,23 @@ class Solution(object):
             "M":1000,
         }
         res = 0
-        for i in len(s)-1:
-            if s[i] in ("I", "X", "C")
-            res = item_dict[s[i]]
+        Flag = False
+        for i in range(len(s)):
+            print(i)
+            if Flag:
+                Flag = False
+                continue
+
+            if i<len(s)-1 and s[i] in before_dict.keys() and s[i+1] in before_dict[s[i]]:
+                print(s[i+1])
+                print(s[i])
+                print(item_dict[s[i+1]])
+                res += item_dict[s[i+1]] - item_dict[s[i]]
+                Flag = True
+                continue
+            res += item_dict[s[i]]
+        print(res)
+        return res
+
+if __name__ == '__main__':
+    Solution().romanToInt('IV')
