@@ -115,7 +115,7 @@ class Solution(object):
         for i in range(len(s)):
             print(i)
             if Flag:
-                Flag = False
+                Flag = Falsee
                 continue
 
             if i<len(s)-1 and s[i] in before_dict.keys() and s[i+1] in before_dict[s[i]]:

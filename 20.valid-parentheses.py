@@ -65,4 +65,20 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        
+
+        pattern = {'(':')', '[':']', '{':'}'}
+        _stack = []
+        for letter in s:
+            # print(letter)
+            if letter in '([{':
+                _stack.append(letter)
+                # print(_stack)
+            if letter in '}])':
+                # print(_stack)
+                if _stack:
+                    if pattern[_stack.pop()] != letter:
+                        return False
+                else:
+                    return False
+        # print(_stack)
+        return True if not _stack else False
