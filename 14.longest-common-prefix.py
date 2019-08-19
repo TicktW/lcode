@@ -42,4 +42,29 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        
+
+        if "" in strs or not strs:
+            return ""
+
+        prev = None
+        while strs:
+            word = strs.pop()
+            if prev:
+                # compare prefix
+                min_len = len(word) if len(word)<len(prev) else len(prev)
+                for i in range(min_len):
+                    if prev[i] != word[i]:
+                        break
+                else:
+                    i += 1
+                if i == 0:
+                    return ""
+                prev = word[:i]
+            else:
+                prev = word
+        else:
+            return prev
+
+if __name__ == "__main__":
+    solu = Solution()
+    solu.longestCommonPrefix(['flower', 'flow', 'flight'])
