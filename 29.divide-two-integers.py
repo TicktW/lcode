@@ -49,4 +49,4 @@ class Solution(object):
         :type divisor: int
         :rtype: int
         """
-        
+        pass
