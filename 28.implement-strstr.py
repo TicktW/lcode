@@ -46,4 +46,17 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        
+        if haystack == needle:
+            return 0
+        i = 0
+        needle_len = len(needle)
+        while i+needle_len <= len(haystack):
+            if haystack[i:i+needle_len] == needle:
+                return i
+            else:
+                i += 1
+        else:
+            return -1
+
+if __name__ == '__main__':
+    Solution().strStr("mississippi", "pi")
