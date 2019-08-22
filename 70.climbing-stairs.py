@@ -39,11 +39,28 @@
 # 3. 2 steps + 1 step
 # 
 # 
-#
+# NOTE for rekursive solution time limit over
+# class Solution(object):
+#     def climbStairs(self, n):
+#         """
+#         :type n: int
+#         :rtype: int
+#         """
+#         if n == 1:
+#             return 1
+#         if n == 2:
+#             return 2
+#         return self.climbStairs(n-1) + self.climbStairs(n-2)
+
 class Solution(object):
     def climbStairs(self, n):
         """
         :type n: int
         :rtype: int
         """
-        
+        i,a,b = 0,0,1
+        while i < n:
+            b,a = a+b,b
+            i += 1
+        return b
+
