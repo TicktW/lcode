@@ -39,4 +39,13 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
-        
+        res = []
+        for i in range(numRows):
+            tmp_li = [1]*(i+1)
+            res.append(tmp_li)
+            for j in range(1, i):
+                res[i][j] = res[i-1][j-1] + res[i-1][j]
+        return res
+
+if __name__ == '__main__':
+    print(Solution().generate(5))
