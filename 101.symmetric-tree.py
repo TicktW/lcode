@@ -13,34 +13,34 @@
 #
 # Given a binary tree, check whether it is a mirror of itself (ie, symmetric
 # around its center).
-# 
+#
 # For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
-# 
-# 
+#
+#
 # ⁠   1
 # ⁠  / \
 # ⁠ 2   2
 # ⁠/ \ / \
 # 3  4 4  3
-# 
-# 
-# 
-# 
+#
+#
+#
+#
 # But the following [1,2,2,null,3,null,3] is not:
-# 
-# 
+#
+#
 # ⁠   1
 # ⁠  / \
 # ⁠ 2   2
 # ⁠  \   \
 # ⁠  3    3
-# 
-# 
-# 
-# 
+#
+#
+#
+#
 # Note:
 # Bonus points if you could solve it both recursively and iteratively.
-# 
+#
 #
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -55,4 +55,19 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        
+        return self.dfs(root, root)
+
+    def dfs(self, l, r):
+        if l is None and r is None:
+            return True
+
+        if l is None:
+            return False
+
+        if r is None:
+            return False
+
+        if l.val != r.val:
+            return False
+
+        return self.dfs(l.left, r.right) and self.dfs(l.right, r.left)
