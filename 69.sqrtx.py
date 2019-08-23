@@ -35,11 +35,29 @@
 # the decimal part is truncated, 2 is returned.
 # 
 # 
-#
+# NOTE for fun
+# class Solution(object):
+#     def mySqrt(self, x):
+#         """
+#         :type x: int
+#         :rtype: int
+#         """
+#         return int(x**0.5)
+
 class Solution(object):
+    '''
+    y = sqrt(x)
+    x = y*y
+    f(y) = x-y*y = 0
+    '''
     def mySqrt(self, x):
         """
         :type x: int
         :rtype: int
         """
-        
+        if x <= 1:
+            return x
+        r = x
+        while r > x/r :
+            r = (r + x/r) // 2
+        return int(r)

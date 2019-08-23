@@ -28,6 +28,15 @@
 # Output: "10101"
 # 
 #
+# class Solution(object):
+#     def addBinary(self, a, b):
+#         """
+#         :type a: str
+#         :type b: str
+#         :rtype: str
+#         """
+#         return format(int(a, 2) + int(b, 2), "b")
+
 class Solution(object):
     def addBinary(self, a, b):
         """
@@ -35,4 +44,27 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
-        
+        if len(a) == 0:
+            return b
+        if len(b) == 0:
+            return a
+
+        res = ''
+
+        i, j, carray = len(a)-1, len(b)-1, 0
+        while i >= 0 or j >= 0:
+            sum_ = carray
+            if i >= 0:
+                sum_ += int(a[i])
+            if j >= 0:
+                sum_ += int(b[j])
+            carray = sum_ / 2
+            res += str(sum_ % 2)
+            i -= 1
+            j -= 1
+
+        if carray > 0:
+            res += str(carray)
+
+        return res[::-1]
+
