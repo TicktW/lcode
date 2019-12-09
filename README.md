@@ -1,2 +1,0 @@
-# lcode
-my leetcode road
