@@ -56,14 +56,14 @@ class Solution {
         int s = 0;
         // travel l1
         while (l1.next != null ) {
-            s = l1.val % 10 + carry;
+            s = (l1.val+ carry) % 10 ;
             carry = (l1.val + carry)/10;
             // carry = (l1.val+carry) > 9 ? 1 : 0;
             l1.val = s % 10;
             l1 = l1.next;        
         }
         
-        s = l1.val % 10 + carry;
+        s = (l1.val + carry) % 10;
         
         // carry = (l1.val+carry) > 9 ? 1 : 0;
         carry = (l1.val + carry)/10;
