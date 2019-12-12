@@ -6,10 +6,13 @@
 
 // @lc code=start
 class Solution {
+    // TODO 先处理字符串，然后在转化为数字
+    // TODO 可以考虑位图的形式。
     public int myAtoi(String str) {
+
         boolean positive = true;
         boolean numStart = false;
-        boolean numEnd = false;
+        // boolean numEnd = false;
 
         int num = 0;
         for (int i = 0; i < str.length(); i++) {
