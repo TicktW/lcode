@@ -1,3 +1,11 @@
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import javax.swing.tree.TreeNode;
+
 /*
  * @lc app=leetcode.cn id=103 lang=java
  *
@@ -38,18 +46,56 @@
 
 // @lc code=start
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null)
+            return res;
+
+        Deque<TreeNode> q = new LinkedList<>();
+        q.add(root);
+
+        int level = 0;
+
+        while (!q.isEmpty()) {
+            res.add(new ArrayList<>());
+
+            int qLen = q.size();
+
+            for (int i = 0; i < qLen; i++) {
+                TreeNode node;
+                if(level % 2 == 0){
+                    node = q.pollLast();
+                }else{
+                    node = q.pollFirst();
+                }
+                
+
+                res.get(level).add(node.val);
+
+                if (node.left != null){
+                    if((level % 2) == 1){
+                        q.offerLast(node.left);
+                    }else{
+                        q.offerFirst(node.left);
+                    }
+                }
+                if (node.right != null){
+                    if((level % 2) == 1){
+                        q.offerLast(node.right);
+                    }else{
+                        q.offerFirst(node.right);
+                    }
+                }
+                    
+            }
+            level += 1;
+
+        }
+        return res;
     }
 }
 // @lc code=end
-
